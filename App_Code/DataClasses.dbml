@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TerendCmsDB" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress2012;Initial Catalog=TerendCmsDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TerendCmsDBConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BackupTable" Member="BackupTables">
+    <Type Name="BackupTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Path" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ErrorTable" Member="ErrorTables">
+    <Type Name="ErrorTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Detail" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Date" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LanguageTable" Member="LanguageTables">
+    <Type Name="LanguageTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Icon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OpenLink" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LogTable" Member="LogTables">
+    <Type Name="LogTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Operation" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Ip" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WebUserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MessageTable" Member="MessageTables">
+    <Type Name="MessageTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Body" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SendDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserIp" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UserGroupID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UnitID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModuleTable" Member="ModuleTables">
+    <Type Name="ModuleTable">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MenuContent" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MenuScript" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="ModuleTable_PermissionTable" Member="PermissionTables" ThisKey="Id" OtherKey="ModuleID" Type="PermissionTable" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PackageTable" Member="PackageTables">
+    <Type Name="PackageTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="[Percent]" Member="Percent" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Expire" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MinResponse" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaxResponse" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsExpert" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PermissionTable" Member="PermissionTables">
+    <Type Name="PermissionTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ModuleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Show" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="[Insert]" Member="Insert" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="[Update]" Member="Update" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="[Delete]" Member="Delete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ModuleTable_PermissionTable" Member="ModuleTable" ThisKey="ModuleID" OtherKey="Id" Type="ModuleTable" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="UserGroupTable_PermissionTable" Member="UserGroupTable" ThisKey="GroupID" OtherKey="Id" Type="UserGroupTable" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="UserTable_PermissionTable" Member="UserTable" ThisKey="UserID" OtherKey="Id" Type="UserTable" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PlacePicTable" Member="PlacePicTables">
+    <Type Name="PlacePicTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Alt" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PlaceID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="PlaceTable_PlacePicTable" Member="PlaceTable" ThisKey="PlaceID" OtherKey="Id" Type="PlaceTable" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductGroupTable1" Member="ProductGroupTable1s">
+    <Type Name="ProductGroupTable1">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OpenLink" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Priority" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="ProductGroupTable1_ProductGroupTable2" Member="ProductGroupTable2s" ThisKey="Id" OtherKey="GroupID1" Type="ProductGroupTable2" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductGroupTable2" Member="ProductGroupTable2s">
+    <Type Name="ProductGroupTable2">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Parent" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OpenLink" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Priority" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="GroupID1" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="ProductGroupTable1_ProductGroupTable2" Member="ProductGroupTable1" ThisKey="GroupID1" OtherKey="Id" Type="ProductGroupTable1" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductTable" Member="ProductTables">
+    <Type Name="ProductTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Special" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GroupID2" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="InBasket" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PriceKind" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Priority" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Availability" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LanguageID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RegDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[View]" Member="View" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EditDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TagName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SalesCount" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="GroupID1" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RegionTable" Member="RegionTables">
+    <Type Name="RegionTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Parent" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Position" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Priority" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LanguageID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SiteVisitTable" Member="SiteVisitTables">
+    <Type Name="SiteVisitTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[View]" Member="View" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SlideTable" Member="SlideTables">
+    <Type Name="SlideTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AlternativeText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OpenLink" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ShowTime" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Priority" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LanguageID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Title1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Title2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Title3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserGroupAccessTable" Member="UserGroupAccessTables">
+    <Type Name="UserGroupAccessTable">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="UserGroupTable_UserGroupAccessTable" Member="UserGroupTable" ThisKey="GroupID" OtherKey="Id" Type="UserGroupTable" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="UserTable_UserGroupAccessTable" Member="UserTable" ThisKey="UserID" OtherKey="Id" Type="UserTable" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserGroupTable" Member="UserGroupTables">
+    <Type Name="UserGroupTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="UserGroupTable_PermissionTable" Member="PermissionTables" ThisKey="Id" OtherKey="GroupID" Type="PermissionTable" />
+      <Association Name="UserGroupTable_UserGroupAccessTable" Member="UserGroupAccessTables" ThisKey="Id" OtherKey="GroupID" Type="UserGroupAccessTable" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserTable" Member="UserTables">
+    <Type Name="UserTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Family" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Tel" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageUrl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Gender" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Twitter" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Facebook" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GooglePlus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Github" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Linkedin" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Skype" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LogoutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RegDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsDelete" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Ip" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmailConfirmed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AccessFailedCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MobileConfirmed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ChangePassRequestCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ChangePassRequestDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CardNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="EmployeeID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RegUserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="UserTable_PermissionTable" Member="PermissionTables" ThisKey="Id" OtherKey="UserID" Type="PermissionTable" />
+      <Association Name="UserTable_UserGroupAccessTable" Member="UserGroupAccessTables" ThisKey="Id" OtherKey="UserID" Type="UserGroupAccessTable" />
+      <Association Name="UserTable_WalletTable" Member="WalletTables" ThisKey="Id" OtherKey="UserID" Type="WalletTable" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VisitorTable" Member="VisitorTables">
+    <Type Name="VisitorTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ip" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="BrowserName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BrowserVersion" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Platform" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ScreenSize" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WebsiteSettingTable" Member="WebsiteSettingTables">
+    <Type Name="WebsiteSettingTable">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Address1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Tel1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Tel2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Tel3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mobile1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mobile2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mobile3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Facebook" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Twitter" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GooglePlus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Instagram" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Linkedin" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Github" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Skype" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Viber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="HeaderImage1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="HeaderImage2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Logo1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Logo2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FooterImage1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FooterImage2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="HeaderTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FooterDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CopyRightText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CopyRightYear" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TameshkSibcheStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LanguageID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PublicGift" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MoarefGift" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Roles1" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Roles2" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WebUserTable" Member="WebUserTables">
+    <Type Name="WebUserTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Family" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Father" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CodeMeli" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ShomareSh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BirthhDay" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Tel" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TelOwnerName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Ip" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RegDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="VerifyEmail" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="VerifyMobile" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="VerifyCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VerifyExpire" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Kind" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Gender" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ImageUrl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserAccountTypeTable" Member="UserAccountTypeTables">
+    <Type Name="UserAccountTypeTable">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="QuestionCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="IsExpert" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Ip" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RegDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ExpireDate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WalletTable" Member="WalletTables">
+    <Type Name="WalletTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Input" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Output" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="InputWay" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OutputWay" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OccurDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FactorID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProductID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="UserTable_WalletTable" Member="UserTable" ThisKey="UserID" OtherKey="Id" Type="UserTable" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PlaceTable" Member="PlaceTables">
+    <Type Name="PlaceTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GroupID1" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Logo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Banner" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Owner" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Tel" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Position" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Facilities" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Services" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="WorkTime" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RegDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserIp" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="WebUserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NumberOfView" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Verify" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PackageID" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="GroupID2" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CityID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RegionID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="PlaceTable_PlacePicTable" Member="PlacePicTables" ThisKey="Id" OtherKey="PlaceID" Type="PlacePicTable" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SmsTable" Member="SmsTables">
+    <Type Name="SmsTable">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Receptor" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SendDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SenderLine" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MessageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

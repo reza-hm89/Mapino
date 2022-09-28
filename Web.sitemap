@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+  <siteMapNode url="~/Default.aspx" title="صفحه اصلی"  description="" >
+    <siteMapNode url="~/Map.aspx" title="نقشه مشاغل و مکان ها"  description="" />
+    <siteMapNode url="~/Search.aspx" title="جستجو مشاغل و مکان ها"  description="" />
+    <siteMapNode url="~/AboutUs.aspx" title="درباره ما"  description=""/>
+    <siteMapNode url="~/Place.aspx" title="ثبت مکان شغلی و عمومی"  description=""/>
+    <siteMapNode url="~/Register.aspx" title="ثبت نام کاربر"  description=""/>
+    <siteMapNode url="~/ResetPassword.aspx" title="بازیابی کلمه عبور"  description=""/>
+    <siteMapNode url="~/Rules.aspx" title="قوانین و شرایط استفاده"  description=""/>
+    <siteMapNode url="~/UserProfile.aspx" title="پروفایل کاربری"  description=""/>
+    <siteMapNode url="~/VerifyEmail.aspx" title="اعتبار ستجی ایمیل"  description=""/>
+  </siteMapNode>
+</siteMap>

